@@ -63,7 +63,29 @@ to the ```require``` section of your `composer.json` file.
 
 ## Usage
 ```php
-// to be done
+use kartik\wordreport\TemplateReport;
+
+$report = new TemplateReport([
+   'format' => TemplateReport::FORMAT_BOTH,
+   'inputFile' => 'Invoice_Template_01.docx',
+   'outputFile' => 'Invoice_Report_' . date('Y-m-d'),
+   'values' => ['invoice_no' => 2001, 'invoice_date' => '2020-02-21'],
+   'images' => ['company_logo' => '@webroot/images/company.jpg', 'customer_logo' => '@webroot/images/company.jpg'],
+   'rows' => [
+     'item' => [
+         ['item' => 1, 'name' => 'Potato', 'price' => '$10.00'],
+         ['item' => 2, 'name' => 'Tomato', 'price' => '$20.00'],
+     ]
+   ],
+   'blocks' => [
+     'customer_block' => [
+         ['customer_name' => 'John', 'customer_address' => 'Address for John'],
+         ['customer_name' => 'Bill', 'customer_address' => 'Address for Bill'],
+     ],
+   ]
+]);
+// Generate the report
+$report->generate();
 ```
 
 ## License
