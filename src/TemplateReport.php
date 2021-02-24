@@ -303,7 +303,7 @@ class TemplateReport extends Component
         $doc = self::FORMAT_WORD;
         $pdf = self::FORMAT_PDF;
         $both = self::FORMAT_BOTH;
-        if ($this->format !== $doc || $this->format !== $pdf || $this->format !== $both) {
+        if ($this->format !== $doc && $this->format !== $pdf && $this->format !== $both) {
             throw new InvalidConfigException("Format must be either '{$doc}' or '{$pdf}' or '{$both}'");
         }
         $this->setTemplate();
